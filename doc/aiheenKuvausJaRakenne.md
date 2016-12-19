@@ -12,3 +12,7 @@
 
 ## Rakenne
 TBD
+
+## Projektin lisäominaisuuksia jos aika riittää
+* Parhaan tuloksen tallennus
+* Vaihtoehtoiset peliasetukset: erikokoinen pelialusta ja eri alkuarvo paloilla. Tarttee oman UI:n ja omat high scoret yms.
