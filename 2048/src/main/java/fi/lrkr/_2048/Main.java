@@ -1,6 +1,6 @@
-package _2048;
+package fi.lrkr._2048;
 
-import _2048.game.Logic;
+import fi.lrkr._2048.game.Logic;
 
 public class Main {
 

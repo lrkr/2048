@@ -1,5 +1,5 @@
 
-package _2048.game;
+package fi.lrkr._2048.game;
 
 public class Piece {
 
@@ -27,17 +27,7 @@ public class Piece {
         return value;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
-
     public int getExp() {
         return exp;
     }
-
-    public void setExp(int exp) {
-        this.exp = exp;
-    }
-    
-    
 }

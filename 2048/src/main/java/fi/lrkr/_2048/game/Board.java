@@ -1,4 +1,4 @@
-package _2048.game;
+package fi.lrkr._2048.game;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

@@ -11,7 +11,7 @@
 * Pelin jatkaminen tai uusi peli voiton jälkeen
 
 ## Rakenne
-TBD
+![](/img/luokkakaavio.png)
 
 ## Projektin lisäominaisuuksia jos aika riittää
 * Parhaan tuloksen tallennus
