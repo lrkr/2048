@@ -167,7 +167,7 @@ public class Board {
 
         while (!pieces.isEmpty()) {
             Piece piece = pieces.removeFirst();
-            //enää ei pitäis olla 0 paloja tässä
+            //enää ei pitäis olla 0 paloja tässä ja jos eka on 0 ni räjähtäis anyway
             while (!pieces.isEmpty() && pieces.peekFirst().getValue() == 0) {
                 pieces.removeFirst();
             }
