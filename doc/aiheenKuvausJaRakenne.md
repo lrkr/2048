@@ -8,9 +8,8 @@
 * Pelin aloitus
 * Pelin palojen liikuttaminen neljään eri suuntaan
 * Voitto kun pelaaja pääsee 2048-palaan
-* Pelin jatkaminen tai uusi peli voiton jälkeen
 
-## Rakenne
+## Luokkakaavio
 ![](luokkakaavio.png)
 
 ## Projektin lisäominaisuuksia jos aika riittää
