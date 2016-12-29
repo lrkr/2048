@@ -32,7 +32,7 @@ public class Board {
         board[1][0] = new Piece(2);
         board[2][0] = new Piece(2);
         board[3][0] = new Piece(4);
-         */
+        */
     }
 
     public void addNew() {
@@ -87,8 +87,11 @@ public class Board {
         for (int y = 0; y < this.height; y++) {
             ArrayDeque<Piece> pieces = new ArrayDeque<>();
             for (int x = 0; x < this.width; x++) {
-                score += handlePiece(board[y][x], pieces);
+                if (board[y][x].getValue() != 0) {
+                    pieces.add(board[y][x]);
+                }
             }
+            score += handleLine(pieces);
             for (int x = 0; x < this.width; x++) {
                 if (!pieces.isEmpty()) {
                     board[y][x] = pieces.removeFirst();
@@ -105,8 +108,11 @@ public class Board {
         for (int y = 0; y < this.height; y++) {
             ArrayDeque<Piece> pieces = new ArrayDeque<>();
             for (int x = width - 1; x >= 0; x--) {
-                score += handlePiece(board[y][x], pieces);
+                if (board[y][x].getValue() != 0) {
+                    pieces.add(board[y][x]);
+                }
             }
+            score += handleLine(pieces);
             for (int x = width - 1; x >= 0; x--) {
                 if (!pieces.isEmpty()) {
                     board[y][x] = pieces.removeFirst();
@@ -123,8 +129,11 @@ public class Board {
         for (int x = 0; x < this.width; x++) {
             ArrayDeque<Piece> pieces = new ArrayDeque<>();
             for (int y = 0; y < this.height; y++) {
-                score += handlePiece(board[y][x], pieces);
+                if (board[y][x].getValue() != 0) {
+                    pieces.add(board[y][x]);
+                }
             }
+            score += handleLine(pieces);
             for (int y = 0; y < this.height; y++) {
                 if (!pieces.isEmpty()) {
                     board[y][x] = pieces.removeFirst();
@@ -141,13 +150,11 @@ public class Board {
         for (int x = 0; x < this.width; x++) {
             ArrayDeque<Piece> pieces = new ArrayDeque<>();
             for (int y = this.height - 1; y >= 0; y--) {
-                //score += handlePiece(board[y][x], pieces);
-                //pitäis laskee score jotenkin handeLinen kanssa
                 if (board[y][x].getValue() != 0) {
                     pieces.add(board[y][x]);
                 }
             }
-            pieces = handleLine(pieces);
+            score += handleLine(pieces);
             for (int y = this.height - 1; y >= 0; y--) {
                 if (!pieces.isEmpty()) {
                     board[y][x] = pieces.removeFirst();
@@ -159,41 +166,21 @@ public class Board {
         return score;
     }
 
-    //fixaa 0-2-2-4 bugin kait, mutta pitää fixaa scoret
-    //tää on vaan downis atm
-    private ArrayDeque<Piece> handleLine(ArrayDeque<Piece> pieces) {
+    private int handleLine(ArrayDeque<Piece> pieces) {
         int score = 0;
-        ArrayDeque<Piece> added = new ArrayDeque<>();
+        ArrayDeque<Piece> helperClone = pieces.clone();
+        pieces.clear();
 
-        while (!pieces.isEmpty()) {
-            Piece piece = pieces.removeFirst();
-            //enää ei pitäis olla 0 paloja tässä ja jos eka on 0 ni räjähtäis anyway
-            while (!pieces.isEmpty() && pieces.peekFirst().getValue() == 0) {
-                pieces.removeFirst();
-            }
-            if (!pieces.isEmpty()) {
-                if (pieces.peekFirst().getValue() == piece.getValue()) {
-                    pieces.removeFirst();
+        while (!helperClone.isEmpty()) {
+            Piece piece = helperClone.removeFirst();
+            if (!helperClone.isEmpty()) {
+                if (helperClone.peekFirst().getValue() == piece.getValue()) {
+                    helperClone.removeFirst();
                     piece.doubleValue();
                     score += piece.getValue();
                 }
             }
-            added.add(piece);
-        }
-        return added;
-    }
-
-    //palojen yhdistäminen pitää korjata. varmaan rivi/sarake kerrallaan eikä pala kerrallaan...
-    private int handlePiece(Piece current, ArrayDeque<Piece> pieces) {
-        int score = 0;
-        if (current.getValue() != 0) {
-            if (!pieces.isEmpty() && pieces.peekLast().getValue() == current.getValue()) {
-                //System.out.println("Merged: " + pieces.peekLast().getValue());
-                pieces.peekLast().doubleValue();
-                score = pieces.peekLast().getValue();
-            } else {
-                pieces.add(current);
-            }
+            pieces.add(piece);
         }
         return score;
     }
@@ -218,19 +205,16 @@ public class Board {
                 return true;
             }
         }
-        
         if (x < this.width - 1) {
             if (board[y][x + 1].getValue() == value) {
                 return true;
             }
         }
-
         if (y > 0) {
             if (board[y - 1][x].getValue() == value) {
                 return true;
             }
         }
-
         if (y < height - 1) {
             if (board[y + 1][x].getValue() == value) {
                 return true;

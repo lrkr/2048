@@ -20,7 +20,6 @@ public class Logic {
         this.score = 0;
     }
 
-
     public void start() {
         board.init();
         board.addNew();
@@ -28,13 +27,6 @@ public class Logic {
         gameLoop();
     }
 
-    /*
-        joskus bugaa 4-2-2-0 alaspäin tyyppinen
-    0   
-    2   
-    2
-    4        
-     */
     public void gameLoop() {
         while (true) {
             if (checkLoss()) {
@@ -69,6 +61,36 @@ public class Logic {
             board.printBoard(moves, score);
         }
     }
+
+    //to be used later with GUI
+    public void executeCommand(char c) {
+        int[][] boardValuesBeforeMove = board.getBoardValues();
+        int moveScore = 0;
+
+        switch (c) {
+            case 'U':
+                moveScore = board.moveUp();
+                break;
+            case 'L':
+                moveScore = board.moveLeft();
+                break;
+            case 'D':
+                moveScore = board.moveDown();
+                break;
+            case 'R':
+                moveScore = board.moveRight();
+                break;
+        }
+        if (checkIfMoveHappened(boardValuesBeforeMove, board.getBoardValues())) {
+            score += moveScore;
+            board.addNew();
+            moves++;
+        }
+        if (checkLoss()) {
+            gameOver();
+        }
+    }
+
     //katastrofaalista...
     private boolean checkIfMoveHappened(int[][] boardValuesBeforeMove, int[][] boardValuesAfterMove) {
         for (int i = 0; i < board.getHeight(); i++) {
@@ -81,7 +103,7 @@ public class Logic {
         return false;
     }
 
-    public boolean checkLoss() {
+    public boolean checkLoss() {        
         return board.checkLoss();
     }
 
