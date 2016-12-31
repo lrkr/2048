@@ -6,3 +6,5 @@ Päivä | Tunnit | Kuvaus
 25.12.2016 | 2h | Testejä, luokkakaavio, pakettien korjausta, pit ja checkstyle
 26.12.2016 | 1h | JUnit kertausta ja lisää testejä
 29.12.2016 | 1h | Palojen yhdistämisen bugikorjaus ja pientä säätöä
+31.12.2016 | 1h | Koodikatselmointi
+31.12.2016 | 3h | Testejä, refaktorointia, dokumentointia
