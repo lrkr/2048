@@ -4,6 +4,10 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Class provides the game board's functionality.
+ */
+
 public class Board {
 
     private Piece[][] board;
@@ -21,7 +25,10 @@ public class Board {
         this.width = x;
         this.startNumber = startNumber;
     }
-
+    
+    /**
+     * Initializes the board with 0 value pieces.
+     */
     public void init() {
         for (int y = 0; y < this.height; y++) {
             for (int x = 0; x < this.width; x++) {
@@ -29,7 +36,10 @@ public class Board {
             }
         }
     }
-
+    
+    /**
+     * Adds a new Piece to a random empty location on the Board. The added Piece's value might be randomly doubled.
+     */
     public void addNew() {
         ArrayList<Location> emptyLocations = new ArrayList<>();
         for (int y = 0; y < this.height; y++) {
@@ -47,7 +57,12 @@ public class Board {
         }
         board[free.getY()][free.getX()] = newPiece;
     }
-
+    
+    /**
+     * Copies Board's Pieces' values to a 2d array.
+     * 
+     * @return 2d int array of Board's Pieces' values.
+     */
     public int[][] getBoardValues() {
         int[][] values = new int[height][width];
         for (int y = 0; y < this.height; y++) {
@@ -57,7 +72,12 @@ public class Board {
         }
         return values;
     }
-
+    
+    /**
+     * Moves all the Pieces on the Board to left, combines suitable Pieces and counts score for the move.
+     *
+     * @return Score of the move.
+     */
     public int moveLeft() {
         int score = 0;
         for (int y = 0; y < this.height; y++) {
@@ -79,6 +99,11 @@ public class Board {
         return score;
     }
 
+    /**
+     * Moves all the Pieces on the Board to right, combines suitable Pieces and counts score for the move.
+     *
+     * @return Score of the move.
+     */
     public int moveRight() {
         int score = 0;
         for (int y = 0; y < this.height; y++) {
@@ -99,7 +124,12 @@ public class Board {
         }
         return score;
     }
-
+    
+    /**
+     * Moves all the Pieces on the Board to up, combines suitable Pieces and counts score for the move.
+     *
+     * @return Score of the move.
+     */
     public int moveUp() {
         int score = 0;
         for (int x = 0; x < this.width; x++) {
@@ -120,7 +150,12 @@ public class Board {
         }
         return score;
     }
-
+    
+    /**
+     * Moves all the Pieces on the Board to down, combines suitable Pieces and counts score for the move.
+     *
+     * @return Score of the move.
+     */
     public int moveDown() {
         int score = 0;
         for (int x = 0; x < this.width; x++) {
@@ -141,7 +176,15 @@ public class Board {
         }
         return score;
     }
-
+    
+    /**
+     * Helper method for moves that gets ArrayDeque of PIeces, goes through it 
+     * and combines suitable Pieces (discards one and doubles the value of the 
+     * other).
+     * 
+     * @param pieces ArrayDeque of Pieces
+     * @return Score of the line's pieces' combinations
+     */
     private int handleLine(ArrayDeque<Piece> pieces) {
         int score = 0;
         ArrayDeque<Piece> helperClone = pieces.clone();
@@ -158,6 +201,11 @@ public class Board {
         return score;
     }
 
+    /**
+     * Checks if the game is lost meaning there are no more possible moves left.
+     * 
+     * @return false if there are possible moves, true if not (lost game)
+     */
     public boolean checkLoss() {
         for (int y = 0; y < this.height; y++) {
             for (int x = 0; x < this.width; x++) {
@@ -168,7 +216,16 @@ public class Board {
         }
         return true;
     }
-
+    
+    /**
+     * Helper method for checkLoss() which checks if there is a piece with the 
+     * same value next to given location in cardinal directions.
+     * 
+     * @param y Piece's Y coordinate
+     * @param x Piece's X coordinate
+     * @param value Piece's value
+     * @return true if there is a possible move, false otherwise
+     */
     private boolean checkAdjacentForPossibleMove(int y, int x, int value) {
         if (x > 0 && board[y][x - 1].getValue() == value) {
             return true;
@@ -185,15 +242,28 @@ public class Board {
         return false;
     }
 
+    /**
+     * 
+     * @return 2d Piece array 
+     */
     public Piece[][] getBoard() {
         return this.board;
     }
 
+    /**
+     * 
+     * @return Height of the Board
+     */
     public int getHeight() {
         return this.height;
     }
 
+    /**
+     * 
+     * @return Width of the Board
+     */
     public int getWidth() {
         return this.width;
     }
+    
 }

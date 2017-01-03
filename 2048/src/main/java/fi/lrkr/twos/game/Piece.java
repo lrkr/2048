@@ -1,6 +1,10 @@
 
 package fi.lrkr.twos.game;
 
+/**
+ * Class provides basic functionality for Piece objects which the Board comprises of.
+ */
+
 public class Piece {
 
     private int value;
@@ -15,6 +19,9 @@ public class Piece {
         this.exp = 1;
     }
     
+    /**
+     * Doubles the value of a piece and increments its exponent, unless the value is 0.
+     */
     public void doubleValue() {
         if (this.value == 0) {
             return;
@@ -22,11 +29,19 @@ public class Piece {
         this.value = this.value * 2;
         this.exp++;
     }
-
+    
+    /**
+     * 
+     * @return Value of the Piece. 
+     */
     public int getValue() {
         return value;
     }
-
+    
+    /**
+     * 
+     * @return Exponent of the Piece. 
+     */
     public int getExp() {
         return exp;
     }

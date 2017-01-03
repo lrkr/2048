@@ -1,13 +1,18 @@
 package fi.lrkr.twos.game;
 
+import fi.lrkr.twos.gui.Gui;
 import java.util.Scanner;
 
+/**
+ * Class provides the core functionality of the game.
+ */
 public class Logic {
 
     private Board board;
     private Scanner reader;
     private int moves;
     private int score;
+    private Gui gui;
 
     public Logic() {
         this(4, 4, 2);
@@ -26,7 +31,15 @@ public class Logic {
         printBoard();
         gameLoop();
     }
-
+    
+    public void startGui() {
+        board.init();
+        board.addNew();
+    }
+    
+    /**
+     * Provides functionality for text based UI.
+     */
     public void gameLoop() {
         while (true) {
             if (checkLoss()) {
@@ -61,9 +74,12 @@ public class Logic {
             printBoard();
         }
     }
-
-    //to be used later with GUI
-    /*
+    
+    /**
+     * Executes a game command, checks if move happened and if it resulted in a loss.
+     * 
+     * @param c Char representing the command
+     */
     public void executeCommand(char c) {
         int[][] boardValuesBeforeMove = board.getBoardValues();
         int moveScore = 0;
@@ -87,13 +103,20 @@ public class Logic {
             board.addNew();
             moves++;
         }
+        gui.reDraw();
         if (checkLoss()) {
             gameOver();
         }
+        
     }
-    */
 
-    //katastrofaalista...
+    /**
+     * Checks if move happened after it was executed by checking if any Piece moved.
+     * 
+     * @param boardValuesBeforeMove 2d array of Board's Pieces' values before move
+     * @param boardValuesAfterMove 2d array of Board's Pieces' values after move
+     * @return True if at least one Piece moved, false otherwise
+     */
     public boolean checkIfMoveHappened(int[][] boardValuesBeforeMove, int[][] boardValuesAfterMove) {
         for (int i = 0; i < board.getHeight(); i++) {
             for (int j = 0; j < board.getWidth(); j++) {
@@ -112,7 +135,7 @@ public class Logic {
     public void gameOver() {
         System.exit(0);
     }
-
+    
     public void printBoard() {
         Piece[][] b = board.getBoard();
         for (int y = 0; y < board.getHeight(); y++) {
@@ -131,6 +154,14 @@ public class Logic {
         System.out.println("moves: " + moves);
         System.out.println("score: " + score);
         System.out.println("");
+    }
+    
+    public Board getBoard() {
+        return this.board;
+    }
+    
+    public void setGui(Gui gui) {
+        this.gui = gui;
     }
 
 }
