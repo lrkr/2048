@@ -49,7 +49,7 @@ public class Board {
                 }
             }
         }
-        //räjähtää jos emptyLocs on tyhjä. pitää fixata
+        //todo: räjähtää jos emptyLocs on tyhjä
         Location free = emptyLocations.get(ThreadLocalRandom.current().nextInt(0, emptyLocations.size()));
         Piece newPiece = new Piece(startNumber);
         if (ThreadLocalRandom.current().nextBoolean()) {

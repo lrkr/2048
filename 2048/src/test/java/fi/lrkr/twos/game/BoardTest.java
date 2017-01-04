@@ -1,7 +1,5 @@
 package fi.lrkr.twos.game;
 
-import fi.lrkr.twos.game.Piece;
-import fi.lrkr.twos.game.Board;
 import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.core.Is.is;
 import org.junit.After;

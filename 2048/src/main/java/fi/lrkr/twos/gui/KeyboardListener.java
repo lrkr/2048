@@ -20,16 +20,16 @@ public class KeyboardListener implements KeyListener {
         int key = e.getKeyCode();
         switch (key) {
             case KeyEvent.VK_RIGHT:
-                gui.ExecuteCommand('R');
+                gui.executeCommand('R');
                 break;
             case KeyEvent.VK_LEFT:
-                gui.ExecuteCommand('L');
+                gui.executeCommand('L');
                 break;
             case KeyEvent.VK_UP:
-                gui.ExecuteCommand('U');
+                gui.executeCommand('U');
                 break;
             case KeyEvent.VK_DOWN:
-                gui.ExecuteCommand('D');
+                gui.executeCommand('D');
                 break;
         }
     }

@@ -1,8 +1,5 @@
 package fi.lrkr.twos.game;
 
-import fi.lrkr.twos.game.Piece;
-import fi.lrkr.twos.game.Board;
-import fi.lrkr.twos.game.Logic;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,7 +26,7 @@ public class LogicTest {
     @Before
     public void setUp() {
         this.l = new Logic();
-        this.b = new Board();
+        this.b = l.getBoard();
         b.init();
     }
 
@@ -75,7 +72,7 @@ public class LogicTest {
         int[][] preMove = b.getBoardValues();
         b.moveLeft();
         assertFalse(l.checkIfMoveHappened(preMove, b.getBoardValues()));
-    }
+    }  
     
 
 }

@@ -8,3 +8,5 @@ Päivä | Tunnit | Kuvaus
 29.12.2016 | 1h | Palojen yhdistämisen bugikorjaus ja pientä säätöä
 31.12.2016 | 1h | Koodikatselmointi
 31.12.2016 | 3h | Testejä, refaktorointia, dokumentointia
+3.1.2016 | 2h | Javadocin aloitus ja perus GUI
+4.1.2016 | 1h | GUI:ta edes hieman järkevämmän näköiseksi

@@ -17,7 +17,7 @@ public class Gui implements Runnable {
         this.logic = logic;
     }
     
-    public void ExecuteCommand(char c) {
+    public void executeCommand(char c) {
         logic.executeCommand(c);
     }
     
@@ -27,7 +27,6 @@ public class Gui implements Runnable {
         frame.setPreferredSize(new Dimension(600, 600));
         frame.setSize(new Dimension(600, 600));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new GridLayout(4, 4));
         createComponents(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
@@ -36,10 +35,8 @@ public class Gui implements Runnable {
     private void createComponents(Container contentPane) {
         gameBoard = new GameBoard(logic);
         gameBoard.init();
-        contentPane.setLayout(new BorderLayout());
         contentPane.add(gameBoard);
         frame.setFocusable(true);
-
         frame.addKeyListener(new KeyboardListener(this));
     }
     

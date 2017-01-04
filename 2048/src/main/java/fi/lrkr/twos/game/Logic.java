@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Logic {
 
     private Board board;
-    private Scanner reader;
+    //private Scanner reader;
     private int moves;
     private int score;
     private Gui gui;
@@ -20,26 +20,26 @@ public class Logic {
 
     public Logic(int height, int width, int start) {
         this.board = new Board(height, width, start);
-        this.reader = new Scanner(System.in);
+        //this.reader = new Scanner(System.in);
         this.moves = 0;
         this.score = 0;
     }
 
+    /*
     public void start() {
         board.init();
         board.addNew();
         printBoard();
         gameLoop();
     }
+    */
     
     public void startGui() {
         board.init();
         board.addNew();
     }
     
-    /**
-     * Provides functionality for text based UI.
-     */
+    /*
     public void gameLoop() {
         while (true) {
             if (checkLoss()) {
@@ -74,6 +74,7 @@ public class Logic {
             printBoard();
         }
     }
+    */
     
     /**
      * Executes a game command, checks if move happened and if it resulted in a loss.
@@ -128,14 +129,17 @@ public class Logic {
         return false;
     }
 
+    //todo: vois varmaan refaktoroida boardista tän
     public boolean checkLoss() {
         return board.checkLoss();
     }
 
+    //todo
     public void gameOver() {
         System.exit(0);
     }
     
+    /*
     public void printBoard() {
         Piece[][] b = board.getBoard();
         for (int y = 0; y < board.getHeight(); y++) {
@@ -155,6 +159,7 @@ public class Logic {
         System.out.println("score: " + score);
         System.out.println("");
     }
+    */
     
     public Board getBoard() {
         return this.board;

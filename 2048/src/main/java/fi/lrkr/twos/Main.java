@@ -7,7 +7,6 @@ import javax.swing.SwingUtilities;
 public class Main {
 
     public static void main(String[] args) {
-        //jotain vikaa x / y seteissä isommissa boardeissa
         Logic logic = new Logic();
         Gui gui = new Gui(logic);
         logic.setGui(gui);

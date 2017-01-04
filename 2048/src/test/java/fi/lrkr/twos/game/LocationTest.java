@@ -1,6 +1,5 @@
 package fi.lrkr.twos.game;
 
-import fi.lrkr.twos.game.Location;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
