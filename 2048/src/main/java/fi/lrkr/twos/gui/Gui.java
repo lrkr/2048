@@ -44,9 +44,13 @@ public class Gui implements Runnable {
         frame.setFocusable(true);
         frame.addKeyListener(new KeyboardListener(this));
     }
-
+    
     public void reDraw() {
         gameBoard.reDraw();
         scorePanel.reDraw();
-    }    
+    }
+
+    public JFrame getFrame() {
+        return frame;
+    }
 }

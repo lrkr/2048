@@ -3,6 +3,7 @@ package fi.lrkr.twos.game;
 import fi.lrkr.twos.file.ScoreReader;
 import fi.lrkr.twos.file.ScoreWriter;
 import fi.lrkr.twos.gui.Gui;
+import javax.swing.JOptionPane;
 
 /**
  * Class provides the core functionality of the game.
@@ -25,14 +26,14 @@ public class Logic {
         this.score = 0;
         this.highScore = 0;
     }
-    
+
     public void start() {
         ScoreReader fr = new ScoreReader();
         this.highScore = fr.readHighScore("score.txt");
         board.init();
         board.addNew();
     }
-    
+
     public void restart() {
         this.moves = 0;
         this.score = 0;
@@ -40,7 +41,7 @@ public class Logic {
         board.addNew();
         gui.reDraw();
     }
-    
+
     /**
      * Executes a game command, checks if move happened and if it resulted in a
      * loss.
@@ -50,7 +51,7 @@ public class Logic {
     public void executeCommand(char c) {
         int[][] boardValuesBeforeMove = board.getBoardValues();
         int moveScore = 0;
-        
+
         switch (c) {
             case 'U':
                 moveScore = board.moveUp();
@@ -101,15 +102,20 @@ public class Logic {
         }
         return false;
     }
-    
+
     public void gameOver() {
         if (highScore == score) {
             ScoreWriter sw = new ScoreWriter();
             sw.saveHighScore(score, "score.txt");
         }
-        restart();
+        int n = JOptionPane.showConfirmDialog(gui.getFrame(), "Game Over! Score: " + score + "\nNew game?", "Game Over", JOptionPane.YES_NO_OPTION);
+        if (n == 0) {
+            restart();
+        } else {
+            System.exit(0);
+        }
     }
-    
+
     public Board getBoard() {
         return this.board;
     }
@@ -129,7 +135,7 @@ public class Logic {
     public int getMoves() {
         return moves;
     }
-    
+
     /**
      * Helper method for checkLoss() which checks if there is a piece with the
      * same value next to given location in cardinal directions.
