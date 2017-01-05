@@ -49,7 +49,9 @@ public class Board {
                 }
             }
         }
-        //todo: räjähtää jos emptyLocs on tyhjä
+        if (emptyLocations.isEmpty()) {
+            return;
+        }
         Location free = emptyLocations.get(ThreadLocalRandom.current().nextInt(0, emptyLocations.size()));
         Piece newPiece = new Piece(startNumber);
         if (ThreadLocalRandom.current().nextBoolean()) {
@@ -202,47 +204,6 @@ public class Board {
     }
 
     /**
-     * Checks if the game is lost meaning there are no more possible moves left.
-     * 
-     * @return false if there are possible moves, true if not (lost game)
-     */
-    public boolean checkLoss() {
-        for (int y = 0; y < this.height; y++) {
-            for (int x = 0; x < this.width; x++) {
-                if (board[y][x].getValue() == 0 || checkAdjacentForPossibleMove(y, x, board[y][x].getValue())) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    
-    /**
-     * Helper method for checkLoss() which checks if there is a piece with the 
-     * same value next to given location in cardinal directions.
-     * 
-     * @param y Piece's Y coordinate
-     * @param x Piece's X coordinate
-     * @param value Piece's value
-     * @return true if there is a possible move, false otherwise
-     */
-    private boolean checkAdjacentForPossibleMove(int y, int x, int value) {
-        if (x > 0 && board[y][x - 1].getValue() == value) {
-            return true;
-        }
-        if (x < this.width - 1 && board[y][x + 1].getValue() == value) {
-            return true;
-        }
-        if (y > 0 && board[y - 1][x].getValue() == value) {
-            return true;
-        }
-        if (y < height - 1 && board[y + 1][x].getValue() == value) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * 
      * @return 2d Piece array 
      */
@@ -264,6 +225,5 @@ public class Board {
      */
     public int getWidth() {
         return this.width;
-    }
-    
+    }    
 }

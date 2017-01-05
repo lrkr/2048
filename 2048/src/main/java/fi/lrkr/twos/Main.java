@@ -11,9 +11,6 @@ public class Main {
         Gui gui = new Gui(logic);
         logic.setGui(gui);
         logic.startGui();
-        SwingUtilities.invokeLater(gui);
-        
-        //Logic logic = new Logic();
-        //logic.start();
+        SwingUtilities.invokeLater(gui);        
     }
 }

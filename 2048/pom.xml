@@ -36,9 +36,11 @@
                 <configuration>
                     <targetClasses>
                         <param>fi.lrkr.twos.game.*</param>
+                        <param>fi.lrkr.twos.file.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>fi.lrkr.twos.game.*</param>
+                        <param>fi.lrkr.twos.file.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

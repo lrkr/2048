@@ -1,7 +1,6 @@
 package fi.lrkr.twos.gui;
 
 import fi.lrkr.twos.game.Board;
-import fi.lrkr.twos.game.Logic;
 import fi.lrkr.twos.game.Piece;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,26 +24,10 @@ public class GameBoard extends JPanel {
     public GameBoard(Board board) {
         this.board = board;
         this.labelMap = new JLabel[board.getHeight()][board.getWidth()];
-        this.colors = new HashMap<Integer, Color>();
-        colors.put(1, Color.YELLOW);
-        colors.put(2, Color.ORANGE);
-        colors.put(3, Color.PINK);
-        colors.put(4, Color.RED);
-        colors.put(5, Color.MAGENTA);
-        colors.put(6, Color.CYAN);
-        colors.put(7, Color.BLUE);
-        colors.put(8, Color.GREEN);
-        colors.put(9, Color.DARK_GRAY);
-        colors.put(10, Color.GRAY);
-        colors.put(11, new Color(75, 5, 75));
-        colors.put(12, new Color(1, 25, 100));
-        colors.put(13, new Color(100, 1, 25));
-        colors.put(14, new Color(1, 100, 25));
-        colors.put(15, new Color(5, 75, 76));
+        this.colors = new HashMap<Integer, Color>();        
     }
 
-    public void init() {
-        this.removeAll();
+    public void init() {        
         this.setLayout(new BorderLayout());
         boardPane = new JLayeredPane();
         boardPane.setLayout(new GridLayout(board.getHeight(), board.getWidth()));
@@ -61,6 +44,22 @@ public class GameBoard extends JPanel {
             }
         }
         this.add(boardPane);
+        
+        colors.put(1, Color.YELLOW);
+        colors.put(2, Color.ORANGE);
+        colors.put(3, Color.PINK);
+        colors.put(4, Color.RED);
+        colors.put(5, Color.MAGENTA);
+        colors.put(6, Color.CYAN);
+        colors.put(7, Color.BLUE);
+        colors.put(8, Color.GREEN);
+        colors.put(9, new Color(100, 100, 125));
+        colors.put(10, Color.GRAY);
+        colors.put(11, new Color(75, 5, 75));
+        colors.put(12, new Color(1, 25, 100));
+        colors.put(13, new Color(100, 1, 25));
+        colors.put(14, new Color(1, 100, 25));
+        colors.put(15, new Color(5, 75, 76));
     }
 
     @Override
