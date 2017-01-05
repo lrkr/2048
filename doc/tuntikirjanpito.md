@@ -11,3 +11,4 @@ Päivä | Tunnit | Kuvaus
 3.1.2016 | 2h | Javadocin aloitus ja perus GUI
 4.1.2016 | 1h | GUI:ta edes hieman järkevämmän näköiseksi
 5.1.2016 | 0.5h | Värit
+5.1.2016 | 3h | Highscoren tallennus ja testit, ScorePanel pisteiden näyttämiseen, pientä refaktorointia
