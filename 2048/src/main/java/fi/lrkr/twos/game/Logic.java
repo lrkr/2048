@@ -3,7 +3,6 @@ package fi.lrkr.twos.game;
 import fi.lrkr.twos.file.ScoreReader;
 import fi.lrkr.twos.file.ScoreWriter;
 import fi.lrkr.twos.gui.Gui;
-import javax.swing.JOptionPane;
 
 /**
  * Class provides the core functionality of the game.
@@ -108,12 +107,8 @@ public class Logic {
             ScoreWriter sw = new ScoreWriter();
             sw.saveHighScore(score, "score.txt");
         }
-        int n = JOptionPane.showConfirmDialog(gui.getFrame(), "Game Over! Score: " + score + "\nNew game?", "Game Over", JOptionPane.YES_NO_OPTION);
-        if (n == 0) {
-            restart();
-        } else {
-            System.exit(0);
-        }
+        gui.gameOverDialog(score);
+        restart();
     }
 
     public Board getBoard() {

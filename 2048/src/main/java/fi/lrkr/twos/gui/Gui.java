@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Gui implements Runnable {
 
@@ -43,6 +44,12 @@ public class Gui implements Runnable {
         content.add(gameBoard, BorderLayout.SOUTH);        
         frame.setFocusable(true);
         frame.addKeyListener(new KeyboardListener(this));
+    }
+    
+    public void gameOverDialog(int score) {
+        if (JOptionPane.showConfirmDialog(frame, "Game Over! Score: " + score + "\nNew game?", "Game Over", JOptionPane.YES_NO_OPTION) == 1) {
+            System.exit(0);
+        }
     }
     
     public void reDraw() {
