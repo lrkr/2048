@@ -10,3 +10,4 @@ Päivä | Tunnit | Kuvaus
 31.12.2016 | 3h | Testejä, refaktorointia, dokumentointia
 3.1.2016 | 2h | Javadocin aloitus ja perus GUI
 4.1.2016 | 1h | GUI:ta edes hieman järkevämmän näköiseksi
+5.1.2016 | 0.5h | Värit

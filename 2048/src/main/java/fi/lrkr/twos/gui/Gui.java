@@ -1,10 +1,8 @@
 package fi.lrkr.twos.gui;
 
 import fi.lrkr.twos.game.Logic;
-import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 public class Gui implements Runnable {
@@ -33,7 +31,7 @@ public class Gui implements Runnable {
     }
 
     private void createComponents(Container contentPane) {
-        gameBoard = new GameBoard(logic);
+        gameBoard = new GameBoard(logic.getBoard());
         gameBoard.init();
         contentPane.add(gameBoard);
         frame.setFocusable(true);
