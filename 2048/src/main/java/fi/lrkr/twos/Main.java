@@ -10,7 +10,7 @@ public class Main {
         Logic logic = new Logic();
         Gui gui = new Gui(logic);
         logic.setGui(gui);
-        logic.startGui();
-        SwingUtilities.invokeLater(gui);        
+        logic.start();
+        SwingUtilities.invokeLater(gui);    
     }
 }

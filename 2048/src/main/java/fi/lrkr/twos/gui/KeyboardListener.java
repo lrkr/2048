@@ -39,6 +39,9 @@ public class KeyboardListener implements KeyListener {
             case KeyEvent.VK_DOWN:
                 gui.executeCommand('D');
                 break;
+            case KeyEvent.VK_F2:
+                gui.executeCommand('X');
+                break;
         }
     }
 

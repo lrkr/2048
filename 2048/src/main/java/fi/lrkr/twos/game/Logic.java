@@ -26,11 +26,19 @@ public class Logic {
         this.highScore = 0;
     }
     
-    public void startGui() {
+    public void start() {
         ScoreReader fr = new ScoreReader();
         this.highScore = fr.readHighScore("score.txt");
         board.init();
         board.addNew();
+    }
+    
+    public void restart() {
+        this.moves = 0;
+        this.score = 0;
+        board.init();
+        board.addNew();
+        gui.reDraw();
     }
     
     /**
@@ -42,7 +50,7 @@ public class Logic {
     public void executeCommand(char c) {
         int[][] boardValuesBeforeMove = board.getBoardValues();
         int moveScore = 0;
-
+        
         switch (c) {
             case 'U':
                 moveScore = board.moveUp();
@@ -56,6 +64,9 @@ public class Logic {
             case 'R':
                 moveScore = board.moveRight();
                 break;
+            case 'X':
+                gameOver();
+                return;
         }
         if (checkIfMoveHappened(boardValuesBeforeMove, board.getBoardValues())) {
             score += moveScore;
@@ -96,8 +107,7 @@ public class Logic {
             ScoreWriter sw = new ScoreWriter();
             sw.saveHighScore(score, "score.txt");
         }
-        //todo
-        System.exit(0);
+        restart();
     }
     
     public Board getBoard() {

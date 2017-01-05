@@ -28,7 +28,7 @@ public class Gui implements Runnable {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         createComponents(frame.getContentPane());
         frame.pack();
-        frame.setVisible(true);
+        frame.setVisible(true);        
     }
 
     private void createComponents(Container content) {
@@ -48,5 +48,5 @@ public class Gui implements Runnable {
     public void reDraw() {
         gameBoard.reDraw();
         scorePanel.reDraw();
-    }
+    }    
 }
