@@ -21,12 +21,23 @@ public class GameBoard extends JPanel {
     private JLabel[][] labelMap;
     private Map<Integer, Color> colors;
 
+    /**
+     * Constructor for creating a new GameBoard object which handles displaying
+     * current game state.
+     * 
+     * @param board Board which is to be displayed
+     */
     public GameBoard(Board board) {
         this.board = board;
         this.labelMap = new JLabel[board.getHeight()][board.getWidth()];
-        this.colors = new HashMap<Integer, Color>();        
+        this.colors = new HashMap<>();        
     }
 
+    /**
+     * Initializes the GameBoard by creating JLabels for each of Board's cells
+     * and setting correct settings for them. Also adds colors to a map for
+     * easier coloring later.
+     */
     public void init() {        
         this.setLayout(new BorderLayout());
         boardPane = new JLayeredPane();
@@ -85,6 +96,9 @@ public class GameBoard extends JPanel {
         }
     }
 
+    /**
+     * Repaints the GameBoard.
+     */
     public void reDraw() {
         repaint();
     }

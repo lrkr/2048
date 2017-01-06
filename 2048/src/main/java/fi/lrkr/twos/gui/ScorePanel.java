@@ -14,10 +14,18 @@ public class ScorePanel extends JPanel {
     private JLabel highScore;
     private JLabel moves;
 
+    /**
+     * Constructor for creating a new ScorePanel.
+     * 
+     * @param logic The Logic object which is used for stats
+     */
     public ScorePanel(Logic logic) {
         this.logic = logic;
     }
     
+    /**
+     * Initializes the ScorePanel by adding Moves, Score and Highscore displays.
+     */
     public void init() {
         this.setLayout(new GridLayout(1, 3));
         
@@ -45,7 +53,10 @@ public class ScorePanel extends JPanel {
         highScore.setText("High score: " + logic.getHighScore() + " ");
         moves.setText(" Moves: " + logic.getMoves());
     }
-    
+
+    /**
+     * Repaints the ScorePanel.
+     */
     public void reDraw() {
         repaint();
     }

@@ -7,5 +7,5 @@
 ## Dokumentaatio
 [Aiheen kuvaus](doc/aiheenKuvausJaRakenne.md)  
 [Tuntikirjanpito](doc/tuntikirjanpito.md)  
-[Pit](https://htmlpreview.github.io/?https://github.com/lrkr/2048/blob/master/doc/pit/201701041440/index.html)  
+[Pit](https://htmlpreview.github.io/?https://github.com/lrkr/2048/blob/master/doc/pit/201701061929/index.html)  
 [Checkstyle](https://htmlpreview.github.io/?https://github.com/lrkr/2048/blob/master/doc/checkstyle/checkstyle.html)

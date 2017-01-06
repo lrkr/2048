@@ -1,5 +1,7 @@
 package fi.lrkr.twos.game;
 
+import fi.lrkr.twos.file.ScoreReader;
+import fi.lrkr.twos.gui.Gui;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -157,5 +159,102 @@ public class LogicTest {
             }
         }
         assertEquals(false, l.checkLoss());
+    }
+
+    @Test
+    public void startTest() {
+        Piece[][] board = b.getBoard();
+        board[1][1] = new Piece();
+        l.start();
+        assertEquals(l.getHighScore(), new ScoreReader().readHighScore("score.txt"));
+        int counter = 0;
+        board = b.getBoard();
+        for (int y = 0; y < b.getHeight(); y++) {
+            for (int x = 0; x < b.getWidth(); x++) {
+                if (board[y][x].getValue() == 0) {
+                    assertEquals(0, board[y][x].getValue());
+                } else {
+                    counter++;
+                }
+            }
+        }
+        assertEquals(1, counter);
+        assertEquals(0, l.getScore());
+        assertEquals(0, l.getMoves());
+    }
+
+    @Test
+    public void restartTest() {
+        Piece[][] board = b.getBoard();
+        board[1][1] = new Piece();
+        l.restart();
+        int counter = 0;
+        board = b.getBoard();
+        for (int y = 0; y < b.getHeight(); y++) {
+            for (int x = 0; x < b.getWidth(); x++) {
+                if (board[y][x].getValue() == 0) {
+                    assertEquals(0, board[y][x].getValue());
+                } else {
+                    counter++;
+                }
+            }
+        }
+        assertEquals(1, counter);
+        assertEquals(0, l.getScore());
+        assertEquals(0, l.getMoves());
+    }
+
+    @Test
+    public void testExecuteCommandD() {
+        Gui gui = new Gui(l);
+        l.setGui(gui);
+        gui.run();
+        Piece[][] board = b.getBoard();
+        board[0][0] = new Piece();
+        board[1][0] = new Piece();
+        l.executeCommand('D');
+        assertEquals(4, l.getScore());
+        assertEquals(4, board[3][0].getValue());        
+    }
+
+    @Test
+    public void testExecuteCommandR() {
+        Piece[][] board = b.getBoard();
+        board[0][0] = new Piece();
+        board[1][0] = new Piece();
+        Gui gui = new Gui(l);
+        l.setGui(gui);
+        gui.run();
+        l.executeCommand('R');
+        assertEquals(0, l.getScore());
+        assertEquals(2, board[0][3].getValue());
+        assertEquals(2, board[1][3].getValue());        
+    }
+
+    @Test
+    public void testExecuteCommandU() {
+        Piece[][] board = b.getBoard();
+        board[0][0] = new Piece();
+        board[1][0] = new Piece();
+        Gui gui = new Gui(l);
+        l.setGui(gui);
+        gui.run();
+        l.executeCommand('U');
+        assertEquals(4, l.getScore());
+        assertEquals(4, board[0][0].getValue());        
+    }
+
+    @Test
+    public void testExecuteCommandL() {
+        Piece[][] board = b.getBoard();
+        board[0][0] = new Piece();
+        board[1][0] = new Piece();
+        Gui gui = new Gui(l);
+        l.setGui(gui);
+        gui.run();
+        l.executeCommand('L');
+        assertEquals(0, l.getScore());
+        assertEquals(2, board[0][0].getValue());
+        assertEquals(2, board[1][0].getValue());        
     }
 }

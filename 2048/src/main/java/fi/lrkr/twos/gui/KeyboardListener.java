@@ -3,12 +3,20 @@ package fi.lrkr.twos.gui;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Class handles player input receiving and processing.
+ */
 public class KeyboardListener implements KeyListener {
 
     private final Gui gui;
     private long time;
     private long threshhold;
 
+    /**
+     * Constructor for creating a new KeyBoardListener.
+     * 
+     * @param gui Gui to witch the KeyBoardListener is added to
+     */
     public KeyboardListener(Gui gui) {
         this.gui = gui;
         this.time = System.currentTimeMillis();

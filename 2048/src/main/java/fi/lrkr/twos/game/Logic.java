@@ -15,17 +15,33 @@ public class Logic {
     private int highScore;
     private Gui gui;
 
+    /**
+     * Constructor for default Logic object values.
+     */
     public Logic() {
         this(4, 4, 2);
     }
 
+    /**
+     * Constructor for creating Logic object which manages the game. Also
+     * creates the Board for playing.
+     * 
+     * @param height Board's height
+     * @param width Board's width
+     * @param start Pieces' starting value
+     */
     public Logic(int height, int width, int start) {
         this.board = new Board(height, width, start);
         this.moves = 0;
         this.score = 0;
         this.highScore = 0;
     }
-
+    
+    /**
+     * Method starts the game by first reading saved high score (if available), 
+     * then initializing the Board to pieces with 0 values and finally adding
+     * the first piece on a random location.
+     */
     public void start() {
         ScoreReader fr = new ScoreReader();
         this.highScore = fr.readHighScore("score.txt");
@@ -33,12 +49,16 @@ public class Logic {
         board.addNew();
     }
 
+    /**
+     * Method restarts the game after a loss if the player decided not to stop
+     * playing. Resets moves and score. Reinitializes the Board to pieces with
+     * 0 value and adds a new piece at random location.
+     */
     public void restart() {
         this.moves = 0;
         this.score = 0;
         board.init();
         board.addNew();
-        gui.reDraw();
     }
 
     /**
@@ -101,34 +121,15 @@ public class Logic {
         }
         return false;
     }
-
-    public void gameOver() {
+    
+    private void gameOver() {
         if (highScore == score) {
             ScoreWriter sw = new ScoreWriter();
             sw.saveHighScore(score, "score.txt");
         }
         gui.gameOverDialog(score);
         restart();
-    }
-
-    public Board getBoard() {
-        return this.board;
-    }
-
-    public void setGui(Gui gui) {
-        this.gui = gui;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public int getHighScore() {
-        return highScore;
-    }
-
-    public int getMoves() {
-        return moves;
+        gui.reDraw();
     }
 
     /**
@@ -173,5 +174,25 @@ public class Logic {
             }
         }
         return true;
+    }
+    
+    public Board getBoard() {
+        return this.board;
+    }
+
+    public void setGui(Gui gui) {
+        this.gui = gui;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public int getMoves() {
+        return moves;
     }
 }

@@ -2,18 +2,27 @@
 package fi.lrkr.twos.game;
 
 /**
- * Class provides basic functionality for Piece objects which the Board comprises of.
+ * Class provides basic functionality for Piece objects which the Board 
+ * comprises of.
  */
 
 public class Piece {
 
     private int value;
     private int exp;
-
+    
+    /**
+     * Constructor for default value Piece.
+     */
     public Piece() {
         this(2);
     }
     
+    /**
+     * Constructor creates a new Piece object with an initial value.
+     * 
+     * @param value Initial value for the Piece
+     */
     public Piece(int value) {
         this.value = value;
         this.exp = 1;
@@ -30,18 +39,10 @@ public class Piece {
         this.exp++;
     }
     
-    /**
-     * 
-     * @return Value of the Piece. 
-     */
     public int getValue() {
         return value;
     }
     
-    /**
-     * 
-     * @return Exponent of the Piece. 
-     */
     public int getExp() {
         return exp;
     }

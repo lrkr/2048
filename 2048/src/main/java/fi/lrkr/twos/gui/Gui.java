@@ -7,6 +7,9 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ * Class provides the graphical user interface for the game.
+ */
 public class Gui implements Runnable {
 
     private final Logic logic;
@@ -14,10 +17,20 @@ public class Gui implements Runnable {
     private GameBoard gameBoard;
     private ScorePanel scorePanel;
 
+    /**
+     * Constructor for creating the Gui object.
+     * 
+     * @param logic Logic object which the Gui controls
+     */
     public Gui(Logic logic) {
         this.logic = logic;
     }
 
+    /**
+     * Passes player's command from KeyBoardListener to Logic.
+     * 
+     * @param c Char representing the command
+     */
     public void executeCommand(char c) {
         logic.executeCommand(c);
     }
@@ -45,13 +58,23 @@ public class Gui implements Runnable {
         frame.setFocusable(true);
         frame.addKeyListener(new KeyboardListener(this));
     }
-    
+
+    /**
+     * Shows an end game dialog which displays score and asks if player wants a
+     * new game or not.
+     * 
+     * @param score Score of the just ended game
+     */
     public void gameOverDialog(int score) {
         if (JOptionPane.showConfirmDialog(frame, "Game Over! Score: " + score + "\nNew game?", "Game Over", JOptionPane.YES_NO_OPTION) == 1) {
             System.exit(0);
         }
     }
-    
+
+    /**
+     * Repaints the GameBoard and ScorePanel. Called after each move and when
+     * starting a new game.
+     */
     public void reDraw() {
         gameBoard.reDraw();
         scorePanel.reDraw();

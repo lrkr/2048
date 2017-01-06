@@ -15,10 +15,20 @@ public class Board {
     private int width;
     private int startNumber;
 
+    /**
+     * Constructor for creating Board with default values.
+     */
     public Board() {
         this(4, 4, 2);
     }
 
+    /**
+     * Constructor for creating Board object.
+     * 
+     * @param y Board's height
+     * @param x Board's width
+     * @param startNumber Initial Piece value
+     */
     public Board(int y, int x, int startNumber) {
         this.board = new Piece[y][x];
         this.height = y;
@@ -203,26 +213,14 @@ public class Board {
         return score;
     }
 
-    /**
-     * 
-     * @return 2d Piece array 
-     */
     public Piece[][] getBoard() {
         return this.board;
     }
 
-    /**
-     * 
-     * @return Height of the Board
-     */
     public int getHeight() {
         return this.height;
     }
 
-    /**
-     * 
-     * @return Width of the Board
-     */
     public int getWidth() {
         return this.width;
     }    
