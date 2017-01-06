@@ -17,6 +17,8 @@ Alkuperäisen pelin tavoitteena on päästä 2048 palaan, mutta tämän version 
 
 ## Sekvenssikaaviot
 ![](sekvenssikaavio1.png)
+
+
 ![](sekvenssikaavio2.png)
 
 ## Projektin lisäominaisuuksia jos aika riittää
