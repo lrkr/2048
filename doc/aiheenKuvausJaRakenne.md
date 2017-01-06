@@ -8,10 +8,16 @@ Alkuperäisen pelin tavoitteena on päästä 2048 palaan, mutta tämän version 
 ### Pelaajan toiminnot
 * Pelin aloitus
 * Pelin palojen liikuttaminen neljään eri suuntaan
+* Uuden pelin aloitus kesken pelin
 * Häviö, sillä peli voi päättyä vain häviöön.
+* Uusi peli tai pelin lopetus häviämisen jälkeen
 
 ## Luokkakaavio
 ![](luokkakaavio.png)
+
+## Sekvenssikaaviot
+![](sekvenssikaavio1.png)
+![](sekvenssikaavio2.png)
 
 ## Projektin lisäominaisuuksia jos aika riittää
 * Parhaan tuloksen tallennus
