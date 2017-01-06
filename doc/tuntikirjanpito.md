@@ -14,3 +14,5 @@ Päivä | Tunnit | Kuvaus
 5.1.2017 | 3h | Highscoren tallennus ja testit, ScorePanel pisteiden näyttämiseen, pientä refaktorointia
 6.1.2017 | 1h | Testejä ja documentointia
 6.1.2017 | 2h | Sekvenssikaaviot ja koodikatselmointi
+6.1.2017 | 2h | DL 6
+Yhteensä | 25.5h |
