@@ -15,4 +15,5 @@ Päivä | Tunnit | Kuvaus
 6.1.2017 | 1h | Testejä ja documentointia
 6.1.2017 | 2h | Sekvenssikaaviot ja koodikatselmointi
 6.1.2017 | 2h | DL 6
-Yhteensä | 25.5h |
+11.1.2017 | 0.1h | Read Score crash korjaus + docs
+Yhteensä | 25.6h |
